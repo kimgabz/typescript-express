@@ -3,6 +3,9 @@ import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session'
 
 import { router } from './modules/login.route';
+import { AppRouter } from './AppRouter';
+
+import './modules/login.controller';
 
 const app = express();
 
@@ -18,6 +21,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(router);
+app.use(AppRouter.getInstance());
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
